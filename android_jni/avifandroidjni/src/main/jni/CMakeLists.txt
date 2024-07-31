@@ -47,4 +47,7 @@ add_library("avif_android" SHARED "libavif_jni.cc")
 include(AndroidNdkModules)
 android_ndk_import_module_cpufeatures()
 
+# 针对特定目标设置链接器标志 适配Android 16KB
+target_link_options(avif_android PRIVATE "-Wl,-z,max-page-size=16384")
+
 target_link_libraries(avif_android jnigraphics avif log cpufeatures)
