@@ -1,7 +1,7 @@
 # Copyright 2022 Google LLC
 # SPDX-License-Identifier: BSD-2-Clause
 
-cmake_minimum_required(VERSION 3.22.1)
+cmake_minimum_required(VERSION 3.13)
 
 project(avif_android_jni)
 
@@ -21,17 +21,14 @@ set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
 # dav1d能够将输入的AV1码流解码为YUV图像。
 # 为支持Android15 16KB的内存页面大小，需要使用NDK27+，但是使用后/Users/XXX/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin目录下
 # 最低为i686-linux-android21-clang，所以会报错如下：没有解决。
-# 如使用NDK 25.2.9519653 则没有这个问题。
 # TODO：Running `i686-linux-android19-clang --version` gave "[Errno 2] No such file or directory: 'i686-linux-android19-clang'"
-# 因为暂时没有视频解码需求，而且希望包体积尽可能小，故而暂时 disable dav1d 和 下面的 libyuv。
-#set(AVIF_CODEC_DAV1D "LOCAL" CACHE STRING "" FORCE)
-set(AVIF_CODEC_DAV1D OFF CACHE BOOL "" FORCE)
+# 如使用NDK 25.2.9519653 则没有这个问题。
+set(AVIF_CODEC_DAV1D "LOCAL" CACHE STRING "" FORCE)
 
 # To disable libyuv, change this variable to OFF.
 # libyuv是一个开源的图像处理库，由Google开发，主要用于处理YUV格式的图像数据。
 # YUV的应用场景：主要应用于视频处理，特别是在需要高效压缩视频流时。
-#set(AVIF_LIBYUV "LOCAL" CACHE STRING "" FORCE)
-set(AVIF_LIBYUV OFF CACHE BOOL "" FORCE)
+set(AVIF_LIBYUV "LOCAL" CACHE STRING "" FORCE)
 
 # To enable libgav1, change the following two variables to ON.
 # libgav1是谷歌开发的开源AV1视频解码器，主要用于Android系统中处理AV1格式的视频数据。它支持硬件加速，以提升性能和降低功耗。

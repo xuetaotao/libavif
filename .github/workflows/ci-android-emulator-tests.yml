@@ -39,7 +39,7 @@ jobs:
         uses: nttld/setup-ndk@afb4c9964b521afb97c864b7d40b11e6911bd410 # v1.5.0
         id: setup-ndk
         with:
-          # r27 is the same as 27.0.12077973.
+          # r25c is the same as 25.2.9519653.
           ndk-version: r25c
           add-to-path: false
       - uses: ./.github/actions/setup-linux
@@ -57,6 +57,6 @@ jobs:
           working-directory: android_jni
           api-level: 31
           force-avd-creation: false
-          ndk: 27.0.12077973
+          ndk: 25.2.9519653
           arch: x86_64
           script: ./gradlew cAT
