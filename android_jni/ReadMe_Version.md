@@ -1,9 +1,14 @@
 # libavif Android Version Record
 
 初始NDK版本25编译(使用./gradlew assemble)成功后，
-会在下面目录下生成aar包：android_jni/avifandroidjni/build/outputs/aar/avifandroidjni-release.aar
-如果要查看生成的so包，可以直接在Android Studio的Terminal里面输入：find . -name "*.so"，会看到so包主要在下面几个目录：
+
+会在下面目录下生成aar包：
+android_jni/avifandroidjni/build/outputs/aar/avifandroidjni-release.aar
+
+如果要查看生成的so包，可以直接在Android Studio的Terminal里面输入：find . -name "*.so"，
+会看到so包主要在下面几个目录：
 build/intermediates的/cmake，/cxx, /merged_native_libs, /library_and_local_jars_jni/debug/jni, /stripped_native_libs/release/out/lib/, /stripped_native_libs/debug/out/lib/
+
 将aar包集成到项目中，然后使用Glide可以在Android9～Android14版本上正确显示AVIF格式图片，但是在Android15上会闪退。
 
 
